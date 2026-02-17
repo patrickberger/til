@@ -1,0 +1,6 @@
+# User specific.
+**/.idea/**
+
+# Code.
+[Bb]in/
+[Oo]bj/
