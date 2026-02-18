@@ -65,7 +65,7 @@ public static class TilIndexRenderer
 
             foreach (var entry in category.Entries)
             {
-                content.AppendLine($"- [{entry.Title}]({entry.RelativeFilePath}) ({entry.Date:yy-MMM-dd})");
+                content.AppendLine($"- [{entry.Title}]({entry.RelativeFilePath}) ({entry.Date:yyyy-MM-dd})");
             }
         }
 
