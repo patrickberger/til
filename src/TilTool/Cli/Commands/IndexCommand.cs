@@ -1,4 +1,4 @@
-﻿namespace TilIndexer.Commands;
+﻿namespace TilTool.Cli.Commands;
 
 using CliFx;
 using CliFx.Attributes;

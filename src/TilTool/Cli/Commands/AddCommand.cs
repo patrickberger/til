@@ -1,10 +1,6 @@
-﻿namespace TilIndexer.Commands;
+﻿namespace TilTool.Cli.Commands;
 
-using System.Diagnostics;
-using System.Net.Mime;
-using System.Reflection;
 using System.Text;
-using System.Text.RegularExpressions;
 
 using CliFx;
 using CliFx.Attributes;
@@ -14,10 +10,6 @@ using CliFx.Infrastructure;
 using JetBrains.Annotations;
 
 using TilTool.Cli.Core;
-
-using YamlDotNet.Serialization;
-using YamlDotNet.Serialization.Converters;
-using YamlDotNet.Serialization.NamingConventions;
 
 [Command("add", Description = "Adds a new til entry.")]
 [UsedImplicitly]
