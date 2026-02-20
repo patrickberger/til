@@ -1,3 +1,3 @@
 ﻿namespace TilTool.Cli.Core;
 
-public sealed record TilCategory(string Folder, IList<TilEntry> Entries);
+public sealed record TilCategory(string Name, string Folder, IList<TilEntry> Entries);

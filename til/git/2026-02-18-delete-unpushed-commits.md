@@ -1,9 +1,10 @@
 ---
-title: Delete unpushed commits
+title: Delete Unpushed Commits
+category: Git
 date: 2026-02-18
 ---
 
-# Delete unpushed commits
+# Delete Unpushed Commits
 
 Delete most recent commit *keeping changes*:
 

@@ -40,7 +40,7 @@ public sealed class AddCommand : ICommand
         console.Output.WriteLine($"File name: '{fileName}'.");
         if (File.Exists(filePath)) throw new CommandException($"File '{filePath}' already exists.");
 
-        var frontMatter = new FrontMatter { Title = Title, Date = today };
+        var frontMatter = new FrontMatter { Title = Title, Category = Category, Date = today };
         var content = $"""
                        ---
                        {Yaml.Serialize(frontMatter)}

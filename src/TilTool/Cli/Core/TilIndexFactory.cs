@@ -19,12 +19,15 @@ public static class TilIndexFactory
             var relativePath = PathUtilities.ToPosix(Path.GetRelativePath(tilRootFolder, filePath));
             var parts = relativePath.Split('/', StringSplitOptions.RemoveEmptyEntries);
             var categoryFolder = parts.Length >= 2 ? parts[0] : string.Empty;
-            
-            if (!categories.ContainsKey(categoryFolder)) categories.Add(categoryFolder, new TilCategory(categoryFolder, new List<TilEntry>()));
             var frontMatter = ReadFrontMatter(filePath);
+            var categoryName = string.IsNullOrEmpty(frontMatter.Category) ? categoryFolder : frontMatter.Category;
+
+            if (!categories.ContainsKey(categoryName))
+                categories.Add(categoryName, new TilCategory(categoryName, categoryFolder, new List<TilEntry>()));
+            
             var relativeFilePath = PathUtilities.ToPosix(Path.GetRelativePath(rootFolder, filePath));
             var entry = new TilEntry(RelativeFilePath: relativeFilePath, Title: frontMatter.Title, Date: frontMatter.Date);
-            categories[categoryFolder].Entries.Add(entry);
+            categories[categoryName].Entries.Add(entry);
         }
 
         return new TilIndex(FileCount: filePaths.Count, Categories: categories.Values.ToList());

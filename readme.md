@@ -2,9 +2,13 @@
 
 <!-- til-index:start -->
 
-## git
+## Git
 
-- [Delete unpushed commits](til/git/2026-02-18-delete-unpushed-commits.md) (2026-02-18)
+- [Delete Unpushed Commits](til/git/2026-02-18-delete-unpushed-commits.md) (2026-02-18)
+
+## MS Test
+
+- [Data Driven Tests](til/ms-test/2026-02-20-data-driven-tests.md) (2026-02-20)
 
 <!-- til-index:end -->
 

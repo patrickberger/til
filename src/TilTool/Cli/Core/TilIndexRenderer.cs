@@ -60,7 +60,7 @@ public static class TilIndexRenderer
         foreach (var category in tilIndex.Categories)
         {
             content.AppendLine()
-                   .AppendLine($"## {category.Folder}")
+                   .AppendLine($"## {category.Name}")
                    .AppendLine();
 
             foreach (var entry in category.Entries)
