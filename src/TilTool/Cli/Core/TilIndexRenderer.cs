@@ -1,4 +1,6 @@
-﻿namespace TilTool.Cli.Core;
+﻿using System.Globalization;
+
+namespace TilTool.Cli.Core;
 
 using System.Text;
 
@@ -6,7 +8,7 @@ public static class TilIndexRenderer
 {
     private const string ReadmeStartMarker = "<!-- til-index:start -->";
 
-    private const string ReadmeEndMarker   = "<!-- til-index:end -->";
+    private const string ReadmeEndMarker = "<!-- til-index:end -->";
 
     private static readonly string DefaultReadmeContent = $"""
                                                            # TIL: Today I Learned
@@ -27,10 +29,10 @@ public static class TilIndexRenderer
         var updatedContent = new StringBuilder();
         var isInIndex = false;
         var readmeContent = File.ReadAllLines(readmeFilePath);
-        
+
         foreach (var line in readmeContent)
         {
-            if (line.StartsWith(ReadmeStartMarker))
+            if (line.StartsWith(ReadmeStartMarker, StringComparison.OrdinalIgnoreCase))
             {
                 updatedContent.AppendLine(line);
                 updatedContent.AppendLine(content);
@@ -38,7 +40,7 @@ public static class TilIndexRenderer
                 continue;
             }
 
-            if (line.StartsWith(ReadmeEndMarker))
+            if (line.StartsWith(ReadmeEndMarker, StringComparison.OrdinalIgnoreCase))
             {
                 updatedContent.AppendLine(line);
                 isInIndex = false;
@@ -46,10 +48,10 @@ public static class TilIndexRenderer
             }
 
             if (isInIndex) continue;
-            
+
             updatedContent.AppendLine(line);
         }
-        
+
         File.WriteAllText(readmeFilePath, updatedContent.ToString(), new UTF8Encoding(false));
     }
 
@@ -60,12 +62,13 @@ public static class TilIndexRenderer
         foreach (var category in tilIndex.Categories)
         {
             content.AppendLine()
-                   .AppendLine($"## {category.Name}")
-                   .AppendLine();
+                .AppendLine(CultureInfo.InvariantCulture, $"## {category.Name}")
+                .AppendLine();
 
             foreach (var entry in category.Entries)
             {
-                content.AppendLine($"- [{entry.Title}]({entry.RelativeFilePath}) ({entry.Date:yyyy-MM-dd})");
+                content.AppendLine(CultureInfo.InvariantCulture,
+                    $"- [{entry.Title}]({entry.RelativeFilePath}) ({entry.Date:yyyy-MM-dd})");
             }
         }
 

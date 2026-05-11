@@ -11,8 +11,8 @@ public static class TilIndexFactory
         var categories = new Dictionary<string, TilCategory>();
         var tilRootFolder = Path.Combine(rootFolder, tilFolderName);
         var filePaths = Directory.EnumerateFiles(tilRootFolder, "*.md", SearchOption.AllDirectories)
-                                 .Where(p => !Path.GetFileName(p).Equals("README.md", StringComparison.OrdinalIgnoreCase))
-                                 .ToList();
+            .Where(p => !Path.GetFileName(p).Equals("README.md", StringComparison.OrdinalIgnoreCase))
+            .ToList();
 
         foreach (var filePath in filePaths)
         {
@@ -24,9 +24,10 @@ public static class TilIndexFactory
 
             if (!categories.ContainsKey(categoryName))
                 categories.Add(categoryName, new TilCategory(categoryName, categoryFolder, new List<TilEntry>()));
-            
+
             var relativeFilePath = PathUtilities.ToPosix(Path.GetRelativePath(rootFolder, filePath));
-            var entry = new TilEntry(RelativeFilePath: relativeFilePath, Title: frontMatter.Title, Date: frontMatter.Date);
+            var entry = new TilEntry(RelativeFilePath: relativeFilePath, Title: frontMatter.Title,
+                Date: frontMatter.Date);
             categories[categoryName].Entries.Add(entry);
         }
 
@@ -36,7 +37,7 @@ public static class TilIndexFactory
     private static FrontMatter ReadFrontMatter(string filePath)
     {
         using var reader = new StreamReader(filePath, Encoding.UTF8, detectEncodingFromByteOrderMarks: true);
-        
+
         var lines = new List<string>();
         var isInFrontMatter = false;
         for (var i = 0; i < 60 && !reader.EndOfStream; i++)

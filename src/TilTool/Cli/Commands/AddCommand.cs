@@ -33,7 +33,7 @@ public sealed class AddCommand : ICommand
         var categoryFolder = GetCategoryFolder();
         Directory.CreateDirectory(categoryFolder);
         console.Output.WriteLine($"Category folder: '{categoryFolder.Replace("\\", "/")}'.");
-        
+
         var today = DateOnly.FromDateTime(DateTime.Now);
         var fileName = GetFileName(today);
         var filePath = Path.Combine(categoryFolder, fileName);
