@@ -14,7 +14,7 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CLASSES_ROOT\Directory\Background\shell\pwsh_here]
 @="PowerShell 7: Open here as Administrator"
-"Icon"="C:\\\\Program Files\\\\PowerShell\\\\7\\\\pwsh.exe"
+"Icon"="C:\\Program Files\\PowerShell\\7\\pwsh.exe"
 "HasLUAShield"=""
 
 [HKEY_CLASSES_ROOT\Directory\Background\shell\pwsh_here\command]
