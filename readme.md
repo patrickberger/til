@@ -9,6 +9,7 @@
 ## MS Test
 
 - [Data Driven Tests](til/ms-test/2026-02-20-data-driven-tests.md) (2026-02-20)
+- [DataRow attributes with null parameters](til/ms-test/2026-09-24-datarow-attributes-with-null-parameters.md) (2026-09-24)
 
 ## PowerShell
 
