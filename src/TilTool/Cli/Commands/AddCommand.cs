@@ -3,8 +3,7 @@
 using System.Text;
 
 using CliFx;
-using CliFx.Attributes;
-using CliFx.Exceptions;
+using CliFx.Binding;
 using CliFx.Infrastructure;
 
 using JetBrains.Annotations;
@@ -13,18 +12,18 @@ using TilTool.Cli.Core;
 
 [Command("add", Description = "Adds a new til entry.")]
 [UsedImplicitly]
-public sealed class AddCommand : ICommand
+public sealed partial class AddCommand : ICommand
 {
     private const string DefaultTilFolder = "til";
 
-    [CommandOption("category", 'c', Description = "The category of the til.", IsRequired = true)]
-    public required string Category { get; init; }
+    [CommandOption("category", 'c', Description = "The category of the til.")]
+    public required string Category { get; set; }
 
-    [CommandOption("root", 'r', Description = "The root directory of the til. Defaults to the directory above folder 'src'.", IsRequired = false)]
-    public string RootFolder { get; init; } = @".\..\..\..";
+    [CommandOption("root", 'r', Description = "The root directory of the til. Defaults to the directory above folder 'src'.")]
+    public string RootFolder { get; set; } = @".\..\..\..";
 
-    [CommandOption("title", 't', Description = "The title of the til.", IsRequired = false)]
-    public string Title { get; init; } = "new til";
+    [CommandOption("title", 't', Description = "The title of the til.")]
+    public string Title { get; set; } = "new til";
 
     public ValueTask ExecuteAsync(IConsole console)
     {

@@ -1,8 +1,7 @@
 ﻿namespace TilTool.Cli.Commands;
 
 using CliFx;
-using CliFx.Attributes;
-using CliFx.Exceptions;
+using CliFx.Binding;
 using CliFx.Infrastructure;
 
 using JetBrains.Annotations;
@@ -11,14 +10,14 @@ using TilTool.Cli.Core;
 
 [Command("index", Description = "(Re-)Creates TOC.")]
 [UsedImplicitly]
-public sealed class IndexCommand : ICommand
+public sealed partial class IndexCommand : ICommand
 {
     private const string DefaultTilFolder = "til";
 
     private const string ReadmePath = "readme.md";
 
-    [CommandOption("root", 'r', Description = "The root directory of the til. Defaults to the directory above folder 'src'.", IsRequired = false)]
-    public string RootFolder { get; init; } = @".\..\..\..";
+    [CommandOption("root", 'r', Description = "The root directory of the til. Defaults to the directory above folder 'src'.")]
+    public string RootFolder { get; set; } = @".\..\..\..";
 
     public ValueTask ExecuteAsync(IConsole console)
     {
