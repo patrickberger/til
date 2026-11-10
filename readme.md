@@ -15,6 +15,10 @@
 
 - [Add Open here to context menue](til/powershell/2026-04-21-add-open-here-to-context-menue.md) (2026-04-21)
 
+## WinGet
+
+- [Update all silently](til/winget/2026-11-10-update-all-silently.md) (2026-11-10)
+
 <!-- til-index:end -->
 
 ## Credits
